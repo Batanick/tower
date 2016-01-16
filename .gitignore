@@ -1,0 +1,9 @@
+!.gitignore
+
+#Visual Studio stuff
+/bin
+/Debug
+/ipch
+*.opensdf
+*.sdf
+*.suo
