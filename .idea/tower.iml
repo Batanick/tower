@@ -2,12 +2,14 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/bin/CoreData" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/bin/Data" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tower.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tower.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GameScene.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tower.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bin/CoreData" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/bin/Data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GameScene.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
