@@ -121,9 +121,8 @@ void TowerApp::MoveCamera(float timeStep) {
 
     // Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
     const SharedPtr<Node> &cameraNode = scene->GetCamera();
-    if (input->GetKeyDown('W')) {
+    if (input->GetKeyDown('W'))
         cameraNode->Translate(Vector3::UP * MOVE_SPEED * timeStep);
-    }
     if (input->GetKeyDown('S'))
         cameraNode->Translate(Vector3::DOWN * MOVE_SPEED * timeStep);
     if (input->GetKeyDown('A'))
@@ -176,7 +175,7 @@ void TowerApp::HandleKeyDown(StringHash, VariantMap &eventData) {
     }
 
         // Toggle console with F1
-    else if (key == KEY_TAB)
+    else if (key == '`')
         GetSubsystem<Console>()->Toggle();
 
         // Toggle debug HUD with F2

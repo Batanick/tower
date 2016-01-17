@@ -5,6 +5,7 @@
 
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/Scene/Node.h>
+#include "GameFactory.h"
 
 using namespace Urho3D;
 
@@ -24,4 +25,5 @@ public:
 private:
     SharedPtr<Scene> scene;
     SharedPtr<Node> cameraNode;
+    GameFactory factory;
 };

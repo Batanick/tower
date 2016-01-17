@@ -5,8 +5,12 @@
       <sourceFolder url="file://$MODULE_DIR$/Tower.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GameFactory.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GameScene.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GameFactory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tower.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Named.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Named.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bin/CoreData" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bin/Data" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GameScene.cpp" isTestSource="false" />

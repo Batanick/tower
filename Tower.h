@@ -3,12 +3,6 @@
 #include <Urho3D/Engine/Application.h>
 #include "GameScene.h"
 
-namespace Urho3D {
-    class Node;
-    class Scene;
-    class Sprite;
-}
-
 using namespace Urho3D;
 
 class TowerApp : public Application {
