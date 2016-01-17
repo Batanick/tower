@@ -15,6 +15,9 @@ if (COMMAND cmake_policy)
         cmake_policy (SET CMP0042 NEW)
     endif ()
 endif ()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+
 # Set CMake modules search path
 set (CMAKE_MODULE_PATH ${URHO3D_HOME}/CMake/Modules)
 # Include Urho3D Cmake common module
@@ -22,6 +25,9 @@ include (Urho3D-CMake-common)
 # Find Urho3D library
 find_package (Urho3D REQUIRED)
 include_directories (${URHO3D_INCLUDE_DIRS})
+
+file(GLOB_RECURSE SOURCE_FILES *.cpp)
+
 # Define target name
 set (TARGET_NAME tower)
 # Define source files
