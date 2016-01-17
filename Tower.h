@@ -61,8 +61,6 @@ private:
     void CreateConsoleAndDebugHud();
     void HandleKeyDown(StringHash eventType, VariantMap &eventData);
 
-    /// Logo sprite.
-    SharedPtr<Sprite> logoSprite_;
     /// Scene.
     SharedPtr<Scene> scene_;
     /// Camera scene node.

@@ -234,7 +234,7 @@ void TowerApp::SubscribeToEvents() {
     UnsubscribeFromEvent(E_SCENEUPDATE);
 }
 
-void TowerApp::HandleUpdate(StringHash eventType, VariantMap &eventData) {
+void TowerApp::HandleUpdate(StringHash, VariantMap &eventData) {
     using namespace Update;
 
     // Take the frame time step, which is stored as a float
@@ -244,7 +244,7 @@ void TowerApp::HandleUpdate(StringHash eventType, VariantMap &eventData) {
     MoveCamera(timeStep);
 }
 
-void TowerApp::HandleKeyDown(StringHash eventType, VariantMap &eventData) {
+void TowerApp::HandleKeyDown(StringHash, VariantMap &eventData) {
     using namespace KeyDown;
 
     int key = eventData[P_KEY].GetInt();
