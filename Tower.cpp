@@ -116,19 +116,8 @@ void TowerApp::MoveCamera(float timeStep) {
 
     Input *input = GetSubsystem<Input>();
 
-    // Movement speed as world units per second
-    const float MOVE_SPEED = 4.0f;
-
     // Read WASD keys and move the camera scene node to the corresponding direction if they are pressed
     const SharedPtr<Node> &cameraNode = scene->GetCamera();
-    if (input->GetKeyDown('W'))
-        cameraNode->Translate(Vector3::UP * MOVE_SPEED * timeStep);
-    if (input->GetKeyDown('S'))
-        cameraNode->Translate(Vector3::DOWN * MOVE_SPEED * timeStep);
-    if (input->GetKeyDown('A'))
-        cameraNode->Translate(Vector3::LEFT * MOVE_SPEED * timeStep);
-    if (input->GetKeyDown('D'))
-        cameraNode->Translate(Vector3::RIGHT * MOVE_SPEED * timeStep);
 
     cameraNode->GetComponent<Camera>();
     if (input->GetKeyDown(KEY_PAGEUP)) {

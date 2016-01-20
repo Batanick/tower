@@ -12,14 +12,23 @@
 #include <Urho3D/Urho2D/CollisionBox2D.h>
 #include <Urho3D/Urho2D/RigidBody2D.h>
 #include <Urho3D/Urho2D/CollisionCircle2D.h>
+#include <Urho3D/Physics/CollisionShape.h>
+#include <Urho3D/Physics/RigidBody.h>
+#include <Urho3D/Graphics/AnimatedModel.h>
 
 #include "Named.h"
+#include "ManualMoveController.h"
+
 #include "Properties.h"
 
-void GameFactory::Init(const SharedPtr<Scene> scene) {
-    this->scene = scene;
 
-    scene->GetContext()->RegisterFactory<Named>();
+void GameFactory::InitContext(Context *context) {
+    context->RegisterFactory<Named>();
+    ManualMoveController::RegisterObject(context);
+}
+
+void GameFactory::InitScene(const SharedPtr<Scene> scene) {
+    this->scene = scene;
 }
 
 void GameFactory::Box() {
@@ -27,10 +36,8 @@ void GameFactory::Box() {
     Sprite2D *boxSprite = cache->GetResource<Sprite2D>("Urho2D/Box.png");
 
     Node *node = scene->CreateChild("RigidBody");
-    node->SetVar(NAME, "Companion");
 
     node->SetPosition(Vector3(Random(-0.1f, 0.1f), 5.0f * 0.4f, 0.0f));
-    node->CreateComponent<Named>();
 
     // Create rigid body
     RigidBody2D *body = node->CreateComponent<RigidBody2D>();
@@ -100,4 +107,34 @@ void GameFactory::Wall() {
     groundShape->SetFriction(0.5f);
 }
 
+void GameFactory::MainPlayer() {
+    ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
+    Sprite2D *boxSprite = cache->GetResource<Sprite2D>("Urho2D/Box.png");
+    Node *node = scene->CreateChild("Character");
+    node->SetPosition(Vector3(0.0f, 2.0f, 0.0f));
 
+    node->SetVar(PROP_NAME, "Botanick");
+    node->CreateComponent<Named>();
+
+    const auto pRigidBody2D = node->CreateComponent<RigidBody2D>();
+    pRigidBody2D->SetBodyType(BT_DYNAMIC);
+
+    node->CreateComponent<RigidBody>();
+
+    node->CreateComponent<ManualMoveController>();
+    node->SetVar(PROP_SPEED, 2.0f);
+
+    StaticSprite2D *staticSprite = node->CreateComponent<StaticSprite2D>();
+    staticSprite->SetSprite(boxSprite);
+
+    // Create box
+    CollisionBox2D *box = node->CreateComponent<CollisionBox2D>();
+    // Set size
+    box->SetSize(Vector2(0.32f, 0.32f));
+    // Set density
+    box->SetDensity(1.0f);
+    // Set friction
+    box->SetFriction(0.5f);
+    // Set restitution
+    box->SetRestitution(0.1f);
+}

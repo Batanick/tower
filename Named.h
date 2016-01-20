@@ -9,23 +9,18 @@ using namespace Urho3D;
 
 class Named : public LogicComponent {
 
+URHO3D_OBJECT(Named, LogicComponent)
+
 public:
     Named(Context *context) : LogicComponent(context) {
+        SetUpdateEventMask(USE_FIXEDUPDATE);
     }
 
-private:
-    virtual void Update(float timeStep) override;
-
-
-public:
-    virtual void Start() override;
-public:
+    virtual void FixedUpdate(float timeStep) override;
+    virtual void DelayedStart() override;
 
 private:
     SharedPtr<Node> textNode;
-protected:
-public:
-    virtual void FixedUpdate(float timeStep) override;
-    virtual void DelayedStart() override;
+
 };
 

@@ -9,17 +9,22 @@
 namespace Urho3D {
     class Scene;
     class Node;
+    class Context;
 }
 
 using namespace Urho3D;
 
 class GameFactory {
 public:
-    void Init(const SharedPtr<Scene> scene);
+    void static InitContext(Context *context);
+    void InitScene(const SharedPtr<Scene> scene);
+
 
     void Box();
     void Ball();
     void Wall();
+
+    void MainPlayer();
 
 private:
     SharedPtr<Scene> scene;

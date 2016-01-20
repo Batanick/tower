@@ -15,15 +15,20 @@
 #include <Urho3D/Core/Context.h>
 
 #include "GameScene.h"
+#include "Properties.h"
 
 static const unsigned NUM_OBJECTS = 100;
 
 void GameScene::Init(Context *context) {
+    GameFactory::InitContext(context);
+
     scene = new Scene(context);
     scene->CreateComponent<Octree>();
     scene->CreateComponent<DebugRenderer>();
+    scene->CreateComponent<PhysicsWorld2D>();
+
     // Create camera node
-    cameraNode = scene->CreateChild("Camera");
+    cameraNode = scene->CreateChild(NAME_CAMERA);
     // Set camera's position
     cameraNode->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 
@@ -35,12 +40,12 @@ void GameScene::Init(Context *context) {
     // Set zoom according to user's resolution to ensure full visibility (initial zoom (1.2) is set for full visibility at 1280x800 resolution)
     camera->SetZoom(1.2f * Min((float) graphics->GetWidth() / 1280.0f, (float) graphics->GetHeight() / 800.0f));
 
-    // Create 2D physics world component
-    scene->CreateComponent<PhysicsWorld2D>();
+
 
     factory = GameFactory();
-    factory.Init(scene);
+    factory.InitScene(scene);
 
     factory.Wall();
     factory.Box();
+    factory.MainPlayer();
 }
