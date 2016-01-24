@@ -35,6 +35,8 @@ void TowerApp::Setup() {
     engineParameters_["LogName"] =
             GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
     engineParameters_["FullScreen"] = false;
+//    engineParameters_["VSync"] = true;
+    engineParameters_["TripleBuffer"] = true;
     engineParameters_["Headless"] = false;
     engineParameters_["Sound"] = false;
 }
