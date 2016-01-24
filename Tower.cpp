@@ -204,6 +204,7 @@ void TowerApp::HandleKeyDown(StringHash, VariantMap &eventData) {
 
     if (key == KEY_F4) {
         drawDebugGeometry = !drawDebugGeometry;
+        return;
     }
 }
 

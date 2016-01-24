@@ -20,6 +20,9 @@ public:
     }
 
     virtual void FixedUpdate(float timeStep) override;
+
+private:
+    bool canJump();
 };
 
 

@@ -25,7 +25,9 @@ void GameScene::Init(Context *context) {
     scene = new Scene(context);
     scene->CreateComponent<Octree>();
     scene->CreateComponent<DebugRenderer>();
-    scene->CreateComponent<PhysicsWorld2D>();
+
+    const auto pPhysicsWorld2D = scene->CreateComponent<PhysicsWorld2D>();
+    pPhysicsWorld2D->SetAutoClearForces(true);
 
     // Create camera node
     cameraNode = scene->CreateChild(NAME_CAMERA);
