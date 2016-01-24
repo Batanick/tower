@@ -40,12 +40,15 @@ void GameScene::Init(Context *context) {
     // Set zoom according to user's resolution to ensure full visibility (initial zoom (1.2) is set for full visibility at 1280x800 resolution)
     camera->SetZoom(1.2f * Min((float) graphics->GetWidth() / 1280.0f, (float) graphics->GetHeight() / 800.0f));
 
-
-
     factory = GameFactory();
     factory.InitScene(scene);
 
     factory.Wall();
-    factory.Box();
+
+    for (int i = 0; i < 5; i++) {
+        factory.Box();
+        factory.Box();
+    }
+
     factory.MainPlayer();
 }

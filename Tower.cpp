@@ -18,16 +18,19 @@
 #include <Urho3D/Urho2D/StaticSprite2D.h>
 #include <Urho3D/UI/UI.h>
 #include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/Urho2D/PhysicsWorld2D.h>
 
 #include "Tower.h"
 
 TowerApp::TowerApp(Context *context) :
         Application(context),
-        yaw_(0.0f),
-        pitch_(0.0f),
-        screenJoystickIndex_(M_MAX_UNSIGNED),
-        screenJoystickSettingsIndex_(M_MAX_UNSIGNED),
-        paused_(false) {
+        yaw(0.0f),
+        pitch(0.0f),
+        screenJoystickIndex(M_MAX_UNSIGNED),
+        screenJoystickSettingsIndex(M_MAX_UNSIGNED),
+        paused(false),
+        drawDebugGeometry(false) {
+    // nothing
 }
 
 void TowerApp::Setup() {
@@ -143,6 +146,9 @@ void TowerApp::SubscribeToEvents() {
 
     // Unsubscribe the SceneUpdate event from base class to prevent camera pitch and yaw in 2D sample
     UnsubscribeFromEvent(E_SCENEUPDATE);
+
+    // Post render stuff subscription
+    SubscribeToEvent(E_POSTRENDERUPDATE, URHO3D_HANDLER(TowerApp, HandlePostRenderUpdate));
 }
 
 void TowerApp::HandleUpdate(StringHash, VariantMap &eventData) {
@@ -167,56 +173,44 @@ void TowerApp::HandleKeyDown(StringHash, VariantMap &eventData) {
             console->SetVisible(false);
         else
             engine_->Exit();
+
+        return;
     }
 
-        // Toggle console with F1
-    else if (key == '`')
+    if (key == '`') {
         GetSubsystem<Console>()->Toggle();
+        return;
+    }
 
-        // Toggle debug HUD with F2
-    else if (key == KEY_F2) {
+    // Toggle debug HUD with F2
+    if (key == KEY_F2) {
         DebugHud *debugHud = GetSubsystem<DebugHud>();
         if (debugHud->GetMode() == 0 || debugHud->GetMode() == DEBUGHUD_SHOW_ALL_MEMORY)
             debugHud->SetMode(DEBUGHUD_SHOW_ALL);
         else
             debugHud->SetMode(DEBUGHUD_SHOW_NONE);
+        return;
     }
-    else if (key == KEY_F3) {
+
+    if (key == KEY_F3) {
         DebugHud *debugHud = GetSubsystem<DebugHud>();
         if (debugHud->GetMode() == 0 || debugHud->GetMode() == DEBUGHUD_SHOW_ALL)
             debugHud->SetMode(DEBUGHUD_SHOW_ALL_MEMORY);
         else
             debugHud->SetMode(DEBUGHUD_SHOW_NONE);
+
+        return;
     }
 
-        // Common rendering quality controls, only when UI has no focused element
-    else if (!GetSubsystem<UI>()->GetFocusElement()) {
-        Renderer *renderer = GetSubsystem<Renderer>();
-
-        if (key == '1') {
-            int quality = renderer->GetTextureQuality();
-            ++quality;
-            if (quality > QUALITY_HIGH)
-                quality = QUALITY_LOW;
-            renderer->SetTextureQuality(quality);
-        }
-
-            // Material quality
-        else if (key == '2') {
-            int quality = renderer->GetMaterialQuality();
-            ++quality;
-            if (quality > QUALITY_HIGH)
-                quality = QUALITY_LOW;
-            renderer->SetMaterialQuality(quality);
-        }
-
-            // Specular lighting
-        else if (key == '3')
-            renderer->SetSpecularLighting(!renderer->GetSpecularLighting());
-
-            // Shadow rendering
-        else if (key == '4')
-            renderer->SetDrawShadows(!renderer->GetDrawShadows());
+    if (key == KEY_F4) {
+        drawDebugGeometry = !drawDebugGeometry;
     }
 }
+
+void TowerApp::HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData) {
+    PhysicsWorld2D *physicsWorld = scene->GetScene()->GetComponent<PhysicsWorld2D>();
+    if (physicsWorld && drawDebugGeometry)
+        physicsWorld->DrawDebugGeometry();
+}
+
 

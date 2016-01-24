@@ -127,7 +127,7 @@ void GameFactory::MainPlayer() {
     // Create box
     CollisionBox2D *box = node->CreateComponent<CollisionBox2D>();
     // Set size
-    box->SetSize(Vector2(0.32f, 0.32f));
+    box->SetSize(Vector2(0.32f, 0.64f));
     // Set density
     box->SetDensity(1.0f);
     // Set friction

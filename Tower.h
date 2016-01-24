@@ -30,6 +30,7 @@ private:
     void SubscribeToEvents();
     /// Handle the logic update event.
     void HandleUpdate(StringHash eventType, VariantMap &eventData);
+    void HandlePostRenderUpdate(StringHash eventType, VariantMap &eventData);
     void SetupWindow();
     void CreateConsoleAndDebugHud();
     void HandleKeyDown(StringHash eventType, VariantMap &eventData);
@@ -38,13 +39,15 @@ private:
     SharedPtr<GameScene> scene;
 
     /// Camera yaw angle.
-    float yaw_;
+    float yaw;
     /// Camera pitch angle.
-    float pitch_;
+    float pitch;
     /// Screen joystick index for navigational controls (mobile platforms only).
-    int screenJoystickIndex_;
+    int screenJoystickIndex;
     /// Screen joystick index for settings (mobile platforms only).
-    int screenJoystickSettingsIndex_;
+    int screenJoystickSettingsIndex;
     /// Pause flag.
-    bool paused_;
+    bool paused;
+    /// Draw debug geometry
+    bool drawDebugGeometry;
 };
