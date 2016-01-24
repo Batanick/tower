@@ -12,8 +12,6 @@
 #include <Urho3D/Urho2D/CollisionBox2D.h>
 #include <Urho3D/Urho2D/RigidBody2D.h>
 #include <Urho3D/Urho2D/CollisionCircle2D.h>
-#include <Urho3D/Physics/CollisionShape.h>
-#include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Graphics/AnimatedModel.h>
 
 #include "Named.h"
@@ -104,7 +102,7 @@ void GameFactory::Wall() {
     // Set box size
     groundShape->SetSize(Vector2(0.32f, 0.32f));
     // Set friction
-    groundShape->SetFriction(0.5f);
+    groundShape->SetFriction(0.2f);
 }
 
 void GameFactory::MainPlayer() {
@@ -118,8 +116,7 @@ void GameFactory::MainPlayer() {
 
     const auto pRigidBody2D = node->CreateComponent<RigidBody2D>();
     pRigidBody2D->SetBodyType(BT_DYNAMIC);
-
-    node->CreateComponent<RigidBody>();
+    pRigidBody2D->SetFixedRotation(true);
 
     node->CreateComponent<ManualMoveController>();
     node->SetVar(PROP_SPEED, 2.0f);
@@ -134,7 +131,7 @@ void GameFactory::MainPlayer() {
     // Set density
     box->SetDensity(1.0f);
     // Set friction
-    box->SetFriction(0.5f);
+    box->SetFriction(0.2f);
     // Set restitution
     box->SetRestitution(0.1f);
 }

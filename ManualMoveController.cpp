@@ -13,21 +13,26 @@
 void ManualMoveController::FixedUpdate(float timeStep) {
     const auto &input = GetSubsystem<Input>();
     const auto &moveSpeed = GetNode()->GetVar(PROP_SPEED).GetFloat();
+    const auto pRigidBody2D = GetNode()->GetComponent<RigidBody2D>();
 
-    if (input->GetKeyDown('W'))
-        GetNode()->Translate(Vector3::UP * moveSpeed * timeStep);
-    if (input->GetKeyDown('S'))
-        GetNode()->Translate(Vector3::DOWN * moveSpeed * timeStep);
-    if (input->GetKeyDown('A'))
-        GetNode()->Translate(Vector3::LEFT * moveSpeed * timeStep);
-    if (input->GetKeyDown('D'))
-        GetNode()->Translate(Vector3::RIGHT * moveSpeed * timeStep);
-
-    if (input->GetKeyDown(KEY_SPACE)) {
-        const auto pRigidBody2D = GetNode()->GetComponent<RigidBody2D>();
-        if (pRigidBody2D)
-            pRigidBody2D->ApplyForceToCenter(Vector2(0.0, 1.0), true);
+    if (input->GetKeyDown('W')) {
+        pRigidBody2D->ApplyLinearImpulse(Vector2::UP * moveSpeed * timeStep, pRigidBody2D->GetMassCenter(), true);
     }
+
+//        GetNode()->(Vector3::UP * moveSpeed * timeStep);
+    if (input->GetKeyDown('S')) {
+
+    }
+//        GetNode()->Translate(Vector3::DOWN * moveSpeed * timeStep);
+    if (input->GetKeyDown('A')) {
+        pRigidBody2D->ApplyLinearImpulse(Vector2::LEFT * moveSpeed * timeStep, pRigidBody2D->GetMassCenter(), true);
+
+    }
+//        GetNode()->Translate(Vector3::LEFT * moveSpeed * timeStep);
+    if (input->GetKeyDown('D')) {
+        pRigidBody2D->ApplyLinearImpulse(Vector2::RIGHT * moveSpeed * timeStep, pRigidBody2D->GetMassCenter(), true);
+    }
+//        GetNode()->Translate(Vector3::RIGHT * moveSpeed * timeStep);
 }
 
 void ManualMoveController::RegisterObject(Context *context) {

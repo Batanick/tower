@@ -31,6 +31,12 @@ TowerApp::TowerApp(Context *context) :
 }
 
 void TowerApp::Setup() {
+    engineParameters_["WindowTitle"] = GetTypeName();
+    engineParameters_["LogName"] =
+            GetSubsystem<FileSystem>()->GetAppPreferencesDir("urho3d", "logs") + GetTypeName() + ".log";
+    engineParameters_["FullScreen"] = false;
+    engineParameters_["Headless"] = false;
+    engineParameters_["Sound"] = false;
 }
 
 void TowerApp::Start() {
@@ -62,8 +68,6 @@ void TowerApp::SetupWindow() {
     Image *icon = cache->GetResource<Image>("Textures/UrhoIcon.png");
     graphics->SetWindowIcon(icon);
     graphics->SetWindowTitle("The Tower");
-
-    graphics->SetMode(800, 600, false, true, false, true, false, false);
 }
 
 void TowerApp::CreateConsoleAndDebugHud() {
@@ -211,45 +215,6 @@ void TowerApp::HandleKeyDown(StringHash, VariantMap &eventData) {
             // Shadow rendering
         else if (key == '4')
             renderer->SetDrawShadows(!renderer->GetDrawShadows());
-
-            // Shadow map resolution
-        else if (key == '5') {
-            int shadowMapSize = renderer->GetShadowMapSize();
-            shadowMapSize *= 2;
-            if (shadowMapSize > 2048)
-                shadowMapSize = 512;
-            renderer->SetShadowMapSize(shadowMapSize);
-        }
-
-            // Shadow depth and filtering quality
-        else if (key == '6') {
-            int quality = renderer->GetShadowQuality();
-            ++quality;
-            if (quality > SHADOWQUALITY_HIGH_24BIT)
-                quality = SHADOWQUALITY_LOW_16BIT;
-            renderer->SetShadowQuality(quality);
-        }
-
-            // Occlusion culling
-        else if (key == '7') {
-            bool occlusion = renderer->GetMaxOccluderTriangles() > 0;
-            occlusion = !occlusion;
-            renderer->SetMaxOccluderTriangles(occlusion ? 5000 : 0);
-        }
-
-            // Instancing
-        else if (key == '8')
-            renderer->SetDynamicInstancing(!renderer->GetDynamicInstancing());
-
-            // Take screenshot
-        else if (key == '9') {
-            Graphics *graphics = GetSubsystem<Graphics>();
-            Image screenshot(context_);
-            graphics->TakeScreenShot(screenshot);
-            // Here we save in the Data folder with date and time appended
-            screenshot.SavePNG(GetSubsystem<FileSystem>()->GetProgramDir() + "Data/Screenshot_" +
-                               Time::GetTimeStamp().Replaced(':', '_').Replaced('.', '_').Replaced(' ', '_') + ".png");
-        }
     }
 }
 
