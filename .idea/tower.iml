@@ -5,12 +5,15 @@
       <sourceFolder url="file://$MODULE_DIR$/Tower.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GameFactory.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ManualMoveController.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/FollowCamera.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ManualMoveController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GameScene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Named.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GameScene.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MathUtils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bin/CoreData" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bin/Data" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/GameScene.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/FollowCamera.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Properties.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />

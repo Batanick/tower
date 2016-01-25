@@ -18,6 +18,7 @@ public:
 
     virtual void FixedUpdate(float timeStep) override;
     virtual void DelayedStart() override;
+    void static RegisterObject(Context *context);
 
 private:
     SharedPtr<Node> textNode;

@@ -10,6 +10,7 @@
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Urho2D/CollisionBox2D.h>
 #include <Urho3D/Urho2D/StaticSprite2D.h>
+#include <Urho3D/Core/Context.h>
 
 #include "Properties.h"
 
@@ -45,4 +46,8 @@ void Named::DelayedStart() {
 
     ResourceCache *cache = GetSubsystem<ResourceCache>();
     text->SetFont(cache->GetResource<Font>("Fonts/Anonymous Pro.ttf"), 15);
+}
+
+void Named::RegisterObject(Context *context) {
+    context->RegisterFactory<Named>();
 }

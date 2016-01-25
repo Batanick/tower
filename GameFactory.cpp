@@ -17,11 +17,12 @@
 #include "ManualMoveController.h"
 
 #include "Properties.h"
-
+#include "FollowCamera.h"
 
 void GameFactory::InitContext(Context *context) {
-    context->RegisterFactory<Named>();
+    Named::RegisterObject(context);
     ManualMoveController::RegisterObject(context);
+    FollowCamera::RegisterObject(context);
 }
 
 void GameFactory::InitScene(const SharedPtr<Scene> scene) {
@@ -85,6 +86,7 @@ void GameFactory::MainPlayer() {
 
     node->SetVar(PROP_NAME, "Botanick");
     node->CreateComponent<Named>();
+    node->CreateComponent<FollowCamera>();
 
     const auto pRigidBody2D = node->CreateComponent<RigidBody2D>();
     pRigidBody2D->SetBodyType(BT_DYNAMIC);
