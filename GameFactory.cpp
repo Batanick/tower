@@ -29,13 +29,13 @@ void GameFactory::InitScene(const SharedPtr<Scene> scene) {
     this->scene = scene;
 }
 
-void GameFactory::Box() {
+void GameFactory::Box(const Vector2 &position) {
     ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
     Sprite2D *boxSprite = cache->GetResource<Sprite2D>("Urho2D/Box.png");
 
     Node *node = scene->CreateChild("RigidBody");
 
-    node->SetPosition(Vector3(Random(-0.1f, 0.1f), 5.0f * 0.4f, 0.0f));
+    node->SetPosition(position);
 
     // Create rigid body
     RigidBody2D *body = node->CreateComponent<RigidBody2D>();
@@ -54,17 +54,17 @@ void GameFactory::Box() {
     box->SetFriction(0.0f);
 }
 
-void GameFactory::Wall() {
+void GameFactory::Wall(const Vector2 &position, const Vector2 &scale) {
     ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
     Sprite2D *boxSprite = cache->GetResource<Sprite2D>("Urho2D/Box.png");
 
     // Create ground.
     Node *groundNode = scene->CreateChild("Ground");
-    groundNode->SetPosition(Vector3(0.0f, -3.0f, 0.0f));
-    groundNode->SetScale(Vector3(200.0f, 1.0f, 0.0f));
+    groundNode->SetPosition(position);
+    groundNode->SetScale(Vector3(scale.x_ / 0.32f, scale.y_ / 0.32f, 0.0f));
 
     // Create 2D rigid body for gound
-    /*RigidBody2D* groundBody = */groundNode->CreateComponent<RigidBody2D>();
+    RigidBody2D *groundBody = groundNode->CreateComponent<RigidBody2D>();
 
     StaticSprite2D *groundSprite = groundNode->CreateComponent<StaticSprite2D>();
     groundSprite->SetSprite(boxSprite);
@@ -77,11 +77,11 @@ void GameFactory::Wall() {
     groundShape->SetFriction(0.0f);
 }
 
-void GameFactory::MainPlayer() {
+void GameFactory::MainPlayer(const Vector2 &position) {
     ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
     Sprite2D *boxSprite = cache->GetResource<Sprite2D>("Urho2D/Box.png");
     Node *node = scene->CreateChild("Character");
-    node->SetPosition(Vector3(0.0f, 2.0f, 0.0f));
+    node->SetPosition(position);
     node->SetScale2D(Vector2(1.0f, 2.0f));
 
     node->SetVar(PROP_NAME, "Botanick");

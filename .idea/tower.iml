@@ -20,6 +20,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Tower.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Named.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GameFactory.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SceneBuilder.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

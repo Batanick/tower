@@ -16,6 +16,7 @@
 
 #include "GameScene.h"
 #include "Properties.h"
+#include "SceneBuilder.h"
 
 static const unsigned NUM_OBJECTS = 100;
 
@@ -45,12 +46,5 @@ void GameScene::Init(Context *context) {
     factory = GameFactory();
     factory.InitScene(scene);
 
-    factory.Wall();
-
-    for (int i = 0; i < 5; i++) {
-        factory.Box();
-        factory.Box();
-    }
-
-    factory.MainPlayer();
+    SceneBuilder::build(factory);
 }

@@ -5,6 +5,7 @@
 //
 
 #include <Urho3D/Container/Ptr.h>
+#include <Urho3D/Math/Vector2.h>
 
 namespace Urho3D {
     class Scene;
@@ -20,11 +21,10 @@ public:
     void InitScene(const SharedPtr<Scene> scene);
 
 
-    void Box();
-    void Ball();
-    void Wall();
+    void Box(const Vector2 &position);
+    void Wall(const Vector2 &position, const Vector2 &scale);
 
-    void MainPlayer();
+    void MainPlayer(const Vector2 &position);
 
 private:
     SharedPtr<Scene> scene;
