@@ -9,7 +9,10 @@
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Urho2D/Sprite2D.h>
 #include <Urho3D/Urho2D/StaticSprite2D.h>
+#include <Urho3D/Urho2D/SpriteSheet2D.h>
+#include <Urho3D/Urho2D/AnimatedSprite2D.h>
 #include <Urho3D/Urho2D/CollisionBox2D.h>
+#include <Urho3D/Urho2D/AnimationSet2D.h>
 #include <Urho3D/Urho2D/RigidBody2D.h>
 #include <Urho3D/Graphics/AnimatedModel.h>
 
@@ -79,10 +82,13 @@ void GameFactory::Wall(const Vector2 &position, const Vector2 &scale) {
 
 void GameFactory::MainPlayer(const Vector2 &position) {
     ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
-    Sprite2D *boxSprite = cache->GetResource<Sprite2D>("Urho2D/Box.png");
+    const auto animationSet = cache->GetResource<AnimationSet2D>("hero/hero.scml");
+
+
+//    Sprite2D *boxSprite = cache->GetResource<Sprite2D>("../assets/hero/animations/idle.xml");
     Node *node = scene->CreateChild("Character");
     node->SetPosition(position);
-    node->SetScale2D(Vector2(1.0f, 2.0f));
+    node->SetScale2D(Vector2(1.0f, 1.0f));
 
     node->SetVar(PROP_NAME, "Botanick");
     node->CreateComponent<Named>();
@@ -98,11 +104,12 @@ void GameFactory::MainPlayer(const Vector2 &position) {
     node->SetVar(PROP_SPEED, 4.0f);
     node->SetVar(PROP_JUMP_SPEED, 4.0f);
 
-    StaticSprite2D *staticSprite = node->CreateComponent<StaticSprite2D>();
-    staticSprite->SetSprite(boxSprite);
+    auto sprite = node->CreateComponent<AnimatedSprite2D>();
+    sprite->SetAnimationSet(animationSet);
+    sprite->SetAnimation("idle", LM_FORCE_LOOPED);
 
     // Create box
     CollisionBox2D *box = node->CreateComponent<CollisionBox2D>();
     // Set size
-    box->SetSize(Vector2(0.32f, 0.32f));
+    box->SetSize(Vector2(1.0f, 1.0f));
 }

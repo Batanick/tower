@@ -41,7 +41,7 @@ void GameScene::Init(Context *context) {
     Graphics *graphics = context->GetSubsystem<Graphics>();
     camera->SetOrthoSize((float) graphics->GetHeight() * PIXEL_SIZE);
     // Set zoom according to user's resolution to ensure full visibility (initial zoom (1.2) is set for full visibility at 1280x800 resolution)
-    camera->SetZoom(1.2f * Min((float) graphics->GetWidth() / 1280.0f, (float) graphics->GetHeight() / 800.0f));
+//    camera->SetZoom(1.2f * Min((float) graphics->GetWidth() / 1280.0f, (float) graphics->GetHeight() / 800.0f));ws
 
     factory = GameFactory();
     factory.InitScene(scene);
