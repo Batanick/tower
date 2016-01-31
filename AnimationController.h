@@ -23,7 +23,7 @@ private:
     void OnJumpStop(StringHash eventType, VariantMap &eventData);
 
     enum Animation {
-        Idle, Run, Jump
+        Idle, Run, Jump, Shoot
     };
 
     std::set<Animation> animations;

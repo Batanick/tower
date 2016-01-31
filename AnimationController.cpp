@@ -84,6 +84,9 @@ void AnimationController::refresh() {
             case Animation::Run:
                 sprite->SetAnimation("run");
                 break;
+            case Animation::Shoot:
+                sprite->SetAnimation("shoot");
+                break;
         }
     }
 }

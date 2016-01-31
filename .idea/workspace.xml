@@ -13,14 +13,27 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e48aa28-97fe-4c55-8da9-45e505e5a569" name="Default" comment="ManualMoveController events introduction">
+    <list default="true" id="7e48aa28-97fe-4c55-8da9-45e505e5a569" name="Default" comment="Animations work">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot - Sprite Sheet.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_001.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_002.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_003.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_004.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_005.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_006.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_007.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_008.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_009.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_010.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_011.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_012.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_013.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/Data/hero/animations/Shoot/Shoot_014.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AnimationController.cpp" afterPath="$PROJECT_DIR$/AnimationController.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AnimationController.h" afterPath="$PROJECT_DIR$/AnimationController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameFactory.cpp" afterPath="$PROJECT_DIR$/GameFactory.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManualMoveController.cpp" afterPath="$PROJECT_DIR$/ManualMoveController.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ManualMoveController.h" afterPath="$PROJECT_DIR$/ManualMoveController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Properties.h" afterPath="$PROJECT_DIR$/Properties.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Data/hero/hero.scml" afterPath="$PROJECT_DIR$/bin/Data/hero/hero.scml" />
     </list>
     <list id="bdf7ee86-2012-433d-94e8-a8c4066ddf3f" name="ignore" comment="" />
     <ignored path="tower.iws" />
@@ -46,13 +59,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AnimationController.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AnimationController.cpp">
+      <file leaf-file-name="GameFactory.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameFactory.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+              <caret line="104" column="35" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
+              <folding>
+                <element signature="e#43#67#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimationController.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AnimationController.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7183099">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
                 <element signature="e#43#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimationController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AnimationController.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+              <folding>
+                <element signature="e#14#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +109,17 @@
         <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/AnimatedSprite2D.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManualMoveController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ManualMoveController.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -88,31 +135,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tower.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tower.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hero.scml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hero.scml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/Data/hero/hero.scml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64165103">
-              <caret line="253" column="35" selection-start-line="253" selection-start-column="35" selection-end-line="253" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManualMoveController.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ManualMoveController.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+            <state vertical-scroll-proportion="-15.592592">
+              <caret line="458" column="42" selection-start-line="458" selection-start-column="42" selection-end-line="458" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -132,21 +159,9 @@
         <entry file="file://$PROJECT_DIR$/ManualMoveController.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+              <caret line="51" column="69" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="69" />
               <folding>
                 <element signature="e#43#74#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnimationController.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AnimationController.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-              <folding>
-                <element signature="e#14#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,10 +208,10 @@
         <option value="$PROJECT_DIR$/FollowCamera.cpp" />
         <option value="$PROJECT_DIR$/ManualMoveController.h" />
         <option value="$PROJECT_DIR$/Properties.cpp" />
-        <option value="$PROJECT_DIR$/GameFactory.cpp" />
-        <option value="$PROJECT_DIR$/AnimationController.h" />
         <option value="$PROJECT_DIR$/Properties.h" />
+        <option value="$PROJECT_DIR$/GameFactory.cpp" />
         <option value="$PROJECT_DIR$/ManualMoveController.cpp" />
+        <option value="$PROJECT_DIR$/AnimationController.h" />
         <option value="$PROJECT_DIR$/bin/Data/hero/hero.scml" />
         <option value="$PROJECT_DIR$/AnimationController.cpp" />
       </list>
@@ -291,6 +306,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tower" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tower" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tower" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -458,12 +487,18 @@
       <option name="project" value="LOCAL" />
       <updated>1454244833135</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Animations work">
+      <created>1454250913801</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1454250913801</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.49392098" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -471,12 +506,12 @@
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.49166667" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31873727" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31873727" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.506079" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39918533" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39918533" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -508,19 +543,13 @@
     <MESSAGE value="Follow camera @_@" />
     <MESSAGE value="Some environment stuff" />
     <MESSAGE value="ManualMoveController events introduction" />
-    <option name="LAST_COMMIT_MESSAGE" value="ManualMoveController events introduction" />
+    <MESSAGE value="Animations work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Animations work" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/AnimationController.cpp</url>
-          <line>38</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -823,16 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GameFactory.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
-          <folding>
-            <element signature="e#43#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -846,34 +865,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManualMoveController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ManualMoveController.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding>
-            <element signature="e#43#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AnimationController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-          <folding>
-            <element signature="e#14#54#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -901,14 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/AnimatedSprite2D.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Core/Object.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -917,21 +900,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AnimationController.cpp">
+    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/AnimatedSprite2D.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManualMoveController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ManualMoveController.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="69" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="69" />
           <folding>
-            <element signature="e#43#75#0" expanded="true" />
+            <element signature="e#43#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameFactory.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="104" column="35" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
+          <folding>
+            <element signature="e#43#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/Data/hero/hero.scml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64165103">
-          <caret line="253" column="35" selection-start-line="253" selection-start-column="35" selection-end-line="253" selection-end-column="35" />
+        <state vertical-scroll-proportion="-15.592592">
+          <caret line="458" column="42" selection-start-line="458" selection-start-column="42" selection-end-line="458" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AnimationController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding>
+            <element signature="e#14#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AnimationController.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7183099">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding>
+            <element signature="e#43#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
