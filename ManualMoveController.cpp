@@ -49,7 +49,7 @@ void ManualMoveController::FixedUpdate(float timeStep) {
 bool ManualMoveController::Flying() {
     const auto pRigidBody2D = node_->GetComponent<RigidBody2D>();
     // dirty hack, but fine enough for now ^_^
-    return (std::fabs(pRigidBody2D->GetLinearVelocity().y_) >= 0.01f);
+    return (std::fabs(pRigidBody2D->GetLinearVelocity().y_) >= 0.00001f);
 }
 
 void ManualMoveController::RegisterObject(Context *context) {

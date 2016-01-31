@@ -79,10 +79,10 @@ void AnimationController::refresh() {
                 sprite->SetAnimation("idle");
                 break;
             case Animation::Jump:
-                sprite->SetAnimation("jump_start", LoopMode2D::LM_FORCE_CLAMPED);
+                sprite->SetAnimation("jump_start", LoopMode2D::LM_FORCE_LOOPED);
                 break;
             case Animation::Run:
-                sprite->SetAnimation("run", LoopMode2D::LM_FORCE_LOOPED);
+                sprite->SetAnimation("run");
                 break;
         }
     }

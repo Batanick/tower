@@ -102,7 +102,7 @@ void GameFactory::MainPlayer(const Vector2 &position) {
 
     node->CreateComponent<ManualMoveController>();
     node->SetVar(PROP_SPEED, 4.0f);
-    node->SetVar(PROP_JUMP_SPEED, 4.0f);
+    node->SetVar(PROP_JUMP_SPEED, 8.0f);
 
     auto sprite = node->CreateComponent<AnimatedSprite2D>();
     sprite->SetAnimationSet(animationSet);
