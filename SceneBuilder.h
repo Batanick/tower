@@ -19,7 +19,9 @@ public:
         factory.Wall({-5.0f, 1.5f}, {0.2f, 3.0f});
         factory.Wall({5.0f, 1.5f}, {0.2f, 3.0f});
 
-        factory.Box({-2.0f, 0.2f});
+        for (int i = 0; i < 15; i++) {
+            factory.Box({Random(-2.0f, -1.0f), Random(0.2f, 3.0f)});
+        }
     }
 };
 

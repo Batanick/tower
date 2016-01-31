@@ -18,9 +18,14 @@ static const StringHash PROP_DIRECTION{"direction"};
 
 // unique object names
 static const String NAME_CAMERA{"Camera"};
+static const String NAME_MAIN_CHAR{"player"};
 
 // events
 static const StringHash EVENT_RUN_START{"event_run_start"};
 static const StringHash EVENT_RUN_STOP{"event_run_stop"};
 static const StringHash EVENT_JUMP_START{"event_jump_start"};
 static const StringHash EVENT_JUMP_STOP{"event_jump_stop"};
+
+URHO3D_EVENT(EVENT_RECEIVE_DAMAGE, ReceiveDamage) {
+    URHO3D_PARAM(P_VALUE, Damage);
+}

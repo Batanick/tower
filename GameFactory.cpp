@@ -22,12 +22,18 @@
 #include "Properties.h"
 #include "FollowCamera.h"
 #include "AnimationController.h"
+#include "FireController.h"
+#include "Bullet.h"
+#include "Mortal.h"
 
 void GameFactory::InitContext(Context *context) {
     Named::RegisterObject(context);
     ManualMoveController::RegisterObject(context);
     FollowCamera::RegisterObject(context);
     AnimationController::RegisterObject(context);
+    FireController::RegisterObject(context);
+    Bullet::RegisterObject(context);
+    Mortal::RegisterObject(context);
 }
 
 void GameFactory::InitScene(const SharedPtr<Scene> scene) {
@@ -57,6 +63,8 @@ void GameFactory::Box(const Vector2 &position) {
     box->SetSize(Vector2(0.32f, 0.32f));
     // Set friction
     box->SetFriction(0.0f);
+
+    node->CreateComponent<Mortal>();
 }
 
 void GameFactory::Wall(const Vector2 &position, const Vector2 &scale) {
@@ -86,7 +94,7 @@ void GameFactory::MainPlayer(const Vector2 &position) {
     ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
     const auto animationSet = cache->GetResource<AnimationSet2D>("hero/hero.scml");
 
-    Node *node = scene->CreateChild("Character");
+    Node *node = scene->CreateChild("");
     node->SetPosition(position);
     node->SetScale2D(Vector2(1.0f, 1.0f));
 
@@ -113,4 +121,7 @@ void GameFactory::MainPlayer(const Vector2 &position) {
     CollisionBox2D *box = node->CreateComponent<CollisionBox2D>();
     // Set size
     box->SetSize(Vector2(0.93f, 1.1f));
+    box->SetGroupIndex(-((short) node->GetID())); // setting up collision ignore group
+
+    node->CreateComponent<FireController>();
 }

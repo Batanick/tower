@@ -35,8 +35,7 @@ void Named::DelayedStart() {
     const auto sprite = node->GetDerivedComponent<Drawable2D>();
     const auto bBox = sprite->GetWorldBoundingBox();
 
-    textNode->SetPosition(Vector3(0, bBox.HalfSize().y_, 0));
-    textNode->SetWorldScale2D(Vector2::ONE);
+    textNode->SetPosition(Vector3(0, 0.7, 0));
 
     auto text = textNode->CreateComponent<Text3D>();
     auto &variant = textNode->GetParent()->GetVar(PROP_NAME);
