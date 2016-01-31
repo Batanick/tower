@@ -106,6 +106,8 @@ void GameFactory::MainPlayer(const Vector2 &position) {
 
     auto sprite = node->CreateComponent<AnimatedSprite2D>();
     sprite->SetAnimationSet(animationSet);
+    sprite->SetAnimation("idle");
+    node->CreateComponent<AnimationController>();
 
     // Create box
     CollisionBox2D *box = node->CreateComponent<CollisionBox2D>();

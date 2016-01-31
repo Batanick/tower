@@ -16,23 +16,19 @@ public:
     void static RegisterObject(Context *context);
 
     ManualMoveController(Context *context)
-            : LogicComponent(context),
-              running(false),
-              jumping(false) {
+            : LogicComponent(context) {
         SetUpdateEventMask(USE_FIXEDUPDATE);
     }
 
     virtual void FixedUpdate(float timeStep) override;
 
 private:
-    bool flying();
+    bool Flying();
 
-    bool running;
-    bool jumping;
-    void onStartRunning();
-    void onStopRunning();
-    void onJumpStop();
-    void onJumpStart();
+    void OnStartRunning();
+    void OnStopRunning();
+    void OnJumpStop();
+    void OnJumpStart();
 };
 
 
