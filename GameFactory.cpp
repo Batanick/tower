@@ -21,11 +21,13 @@
 
 #include "Properties.h"
 #include "FollowCamera.h"
+#include "AnimationController.h"
 
 void GameFactory::InitContext(Context *context) {
     Named::RegisterObject(context);
     ManualMoveController::RegisterObject(context);
     FollowCamera::RegisterObject(context);
+    AnimationController::RegisterObject(context);
 }
 
 void GameFactory::InitScene(const SharedPtr<Scene> scene) {
@@ -84,8 +86,6 @@ void GameFactory::MainPlayer(const Vector2 &position) {
     ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
     const auto animationSet = cache->GetResource<AnimationSet2D>("hero/hero.scml");
 
-
-//    Sprite2D *boxSprite = cache->GetResource<Sprite2D>("../assets/hero/animations/idle.xml");
     Node *node = scene->CreateChild("Character");
     node->SetPosition(position);
     node->SetScale2D(Vector2(1.0f, 1.0f));
@@ -106,10 +106,9 @@ void GameFactory::MainPlayer(const Vector2 &position) {
 
     auto sprite = node->CreateComponent<AnimatedSprite2D>();
     sprite->SetAnimationSet(animationSet);
-    sprite->SetAnimation("idle", LM_FORCE_LOOPED);
 
     // Create box
     CollisionBox2D *box = node->CreateComponent<CollisionBox2D>();
     // Set size
-    box->SetSize(Vector2(1.0f, 1.0f));
+    box->SetSize(Vector2(0.93f, 1.1f));
 }

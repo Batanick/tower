@@ -15,14 +15,24 @@ URHO3D_OBJECT(ManualMoveController, LogicComponent)
 public:
     void static RegisterObject(Context *context);
 
-    ManualMoveController(Context *context) : LogicComponent(context) {
+    ManualMoveController(Context *context)
+            : LogicComponent(context),
+              running(false),
+              jumping(false) {
         SetUpdateEventMask(USE_FIXEDUPDATE);
     }
 
     virtual void FixedUpdate(float timeStep) override;
 
 private:
-    bool canJump();
+    bool flying();
+
+    bool running;
+    bool jumping;
+    void onStartRunning();
+    void onStopRunning();
+    void onJumpStop();
+    void onJumpStart();
 };
 
 
