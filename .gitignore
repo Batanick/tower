@@ -4,6 +4,7 @@
 #/bin
 /Debug
 /ipch
+/.idea
 *.opensdf
 *.sdf
 *.suo
