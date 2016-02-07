@@ -21,6 +21,9 @@ void AnimationController::RegisterObject(Context *context) {
 }
 
 void AnimationController::Start() {
+    current = AnimationPriority::Idle;
+    timeout = 0.0f;
+
     auto sprite = node_->GetComponent<AnimatedSprite2D>();
     sprite->SetAnimation("idle");
 
@@ -49,13 +52,21 @@ void AnimationController::OnJumpStop(StringHash eventType, VariantMap &eventData
 
 void AnimationController::OnShoot(StringHash eventType, VariantMap &eventData) {
     const auto target = eventData[EventDoShoot::P_TARGET].GetVector2();
-    pushAnimation(Animation(AnimationPriority::Shoot, false, "shoot"));
+    pushAnimation(Animation(AnimationPriority::Shoot, false, "shoot", 0.5f));
 }
 
-void AnimationController::FixedPostUpdate(float timeStep) {
+void AnimationController::PostUpdate(float timeStep) {
     const auto direction = node_->GetParent()->GetVar(PROP_DIRECTION).GetVector2();
     auto sprite = node_->GetComponent<AnimatedSprite2D>();
     sprite->SetFlipX(direction == Vector2::LEFT);
+
+    if (timeout > 0.0f) {
+        timeout -= timeStep;
+
+        if (timeout <= 0.0f) {
+            pullAnimation(current);
+        }
+    }
 }
 
 void AnimationController::pullAnimation(const AnimationController::AnimationPriority &priority) {
@@ -85,5 +96,8 @@ void AnimationController::refresh() {
     if (it != animations.rend() && it->GetPriority() != current) {
         current = it->GetPriority();
         sprite->SetAnimation(it->GetName(), it->IsLoop() ? LoopMode2D::LM_FORCE_LOOPED : LM_FORCE_CLAMPED);
+        if (it->GetTimeout() > 0.0f) {
+            timeout = it->GetTimeout();
+        }
     }
 }

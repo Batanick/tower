@@ -29,8 +29,8 @@ private:
 
     class Animation {
     public:
-        Animation(const AnimationPriority &priority, const bool loop, const String &name)
-                : priority(priority), loop(loop), name(name) { }
+        Animation(const AnimationPriority &priority, const bool loop, const String &name, const float timeout = 0.0f)
+                : priority(priority), loop(loop), name(name), timeout(timeout) { }
 
         const AnimationPriority &GetPriority() const {
             return priority;
@@ -49,21 +49,28 @@ private:
             return priority < r.priority;
         }
 
+
+        const float GetTimeout() const {
+            return timeout;
+        }
+
     private:
         const AnimationPriority priority;
         const bool loop;
         const String name;
-
+        const float timeout;
     };
 
     std::set<Animation> animations;
+
     AnimationPriority current;
+    float timeout;
 
     void refresh();
     void pushAnimation(const Animation &animation);
     void pullAnimation(const AnimationPriority &animation);
 public:
-    virtual void FixedPostUpdate(float timeStep) override;
+    virtual void PostUpdate(float timeStep) override;
 };
 
 
