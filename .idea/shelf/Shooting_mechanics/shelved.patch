@@ -1,0 +1,336 @@
+Index: Properties.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Properties.h	(date 1454261594000)
++++ Properties.h	(revision )
+@@ -20,12 +20,24 @@
+ static const String NAME_CAMERA{"Camera"};
+ static const String NAME_MAIN_CHAR{"player"};
+ 
+-// events
++// =====================================================
++// EVENTS
++// =====================================================
++//Animation
+ static const StringHash EVENT_RUN_START{"event_run_start"};
+ static const StringHash EVENT_RUN_STOP{"event_run_stop"};
+ static const StringHash EVENT_JUMP_START{"event_jump_start"};
+ static const StringHash EVENT_JUMP_STOP{"event_jump_stop"};
+ 
++// Mechanics
+ URHO3D_EVENT(EVENT_RECEIVE_DAMAGE, ReceiveDamage) {
+     URHO3D_PARAM(P_VALUE, Damage);
++}
++
++// Controlls
++URHO3D_EVENT(EVENT_DO_MOVE, EventMove) {
++    URHO3D_PARAM(P_DIRECTION, Damage);
++}
++
++URHO3D_EVENT(EVENT_DO_JUMP, EventMove) {
+ }
+Index: GameFactory.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- GameFactory.cpp	(date 1454261594000)
++++ GameFactory.cpp	(revision )
+@@ -17,7 +17,7 @@
+ #include <Urho3D/Graphics/AnimatedModel.h>
+ 
+ #include "Named.h"
+-#include "ManualMoveController.h"
++#include "MoveController.h"
+ 
+ #include "Properties.h"
+ #include "FollowCamera.h"
+@@ -25,15 +25,17 @@
+ #include "FireController.h"
+ #include "Bullet.h"
+ #include "Mortal.h"
++#include "PlayerController.h"
+ 
+ void GameFactory::InitContext(Context *context) {
+     Named::RegisterObject(context);
+-    ManualMoveController::RegisterObject(context);
++    MoveController::RegisterObject(context);
+     FollowCamera::RegisterObject(context);
+     AnimationController::RegisterObject(context);
+     FireController::RegisterObject(context);
+     Bullet::RegisterObject(context);
+     Mortal::RegisterObject(context);
++    PlayerController::RegisterObject(context);
+ }
+ 
+ void GameFactory::InitScene(const SharedPtr<Scene> scene) {
+@@ -108,7 +110,7 @@
+     pRigidBody2D->SetMass(10.0);
+     pRigidBody2D->SetLinearDamping(2.0f);
+ 
+-    node->CreateComponent<ManualMoveController>();
++    node->CreateComponent<MoveController>();
+     node->SetVar(PROP_SPEED, 4.0f);
+     node->SetVar(PROP_JUMP_SPEED, 8.0f);
+ 
+@@ -124,4 +126,5 @@
+     box->SetGroupIndex(-((short) node->GetID())); // setting up collision ignore group
+ 
+     node->CreateComponent<FireController>();
++    node->CreateComponent<PlayerController>();
+ }
+Index: PlayerController.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PlayerController.h	(revision )
++++ PlayerController.h	(revision )
+@@ -0,0 +1,24 @@
++#pragma once
++
++
++#include <Urho3D/Scene/LogicComponent.h>
++
++using namespace Urho3D;
++
++class PlayerController : public LogicComponent {
++
++URHO3D_OBJECT(PlayerController, LogicComponent)
++
++public:
++    void static RegisterObject(Context *context);
++    virtual void FixedUpdate(float timeStep) override;
++
++    PlayerController(Context *context) : LogicComponent(context) {
++        // nothing
++    }
++
++};
++
++
++
++
+Index: ManualMoveController.cpp
+===================================================================
+--- ManualMoveController.cpp	(date 1454261594000)
++++ MoveController.cpp	(revision )
+@@ -7,71 +7,79 @@
+ #include <Urho3D/Core/Context.h>
+ #include <Urho3D/Urho2D/RigidBody2D.h>
+ 
+-#include "ManualMoveController.h"
++#include "MoveController.h"
+ #include "Properties.h"
+ 
+-void ManualMoveController::FixedUpdate(float timeStep) {
+-    const auto &input = GetSubsystem<Input>();
+-    const auto &pRigidBody2D = node_->GetComponent<RigidBody2D>();
+ 
+-    const bool running = node_->GetVar(PROP_IS_RUNNING).GetBool();
+-    const bool jumping = node_->GetVar(PROP_IS_JUMPING).GetBool();
++void MoveController::Start() {
++    SubscribeToEvent(node_, EVENT_DO_JUMP, URHO3D_HANDLER(MoveController, DoJump));
++    SubscribeToEvent(node_, EVENT_DO_MOVE, URHO3D_HANDLER(MoveController, DoMove));
++}
+ 
+-    const bool commandLeft = input->GetKeyDown('A');
+-    const bool commandRight = input->GetKeyDown('D');
+-    if (commandLeft ^ commandRight) {
+-        auto direction = commandLeft ? Vector2::LEFT : Vector2::RIGHT;
+-        const auto &moveSpeed = node_->GetVar(PROP_SPEED).GetFloat();
+-        pRigidBody2D->ApplyLinearImpulse(direction * moveSpeed * timeStep, pRigidBody2D->GetMassCenter(), true);
+-        node_->SetVar(PROP_DIRECTION, direction);
++void MoveController::RegisterObject(Context *context) {
++    context->RegisterFactory<MoveController>();
++}
+ 
++void MoveController::OnStartRunning() {
++    const auto running = node_->GetVar(PROP_IS_RUNNING).GetBool();
+-        if (!running) {
++    if (!running) {
+-            OnStartRunning();
++        node_->SetVar(PROP_IS_RUNNING, true);
++        node_->SendEvent(EVENT_RUN_START);
+-        }
++    }
+-    } else if (running) {
+-        OnStopRunning();
+-    }
++}
+ 
+-    if (!Flying()) {
+-        if (jumping) {
+-            OnJumpStop();
++void MoveController::OnStopRunning() {
++    const auto running = node_->GetVar(PROP_IS_RUNNING).GetBool();
++    if (running) {
++        node_->SetVar(PROP_IS_RUNNING, false);
++        node_->SendEvent(EVENT_RUN_STOP);
+-        }
++    }
++}
+ 
+-        if (input->GetKeyPress(KEY_SPACE)) {
+-            const auto &jumpSpeed = node_->GetVar(PROP_JUMP_SPEED).GetFloat();
+-            pRigidBody2D->ApplyLinearImpulse(Vector2::UP * jumpSpeed, pRigidBody2D->GetMassCenter(), true);
++void MoveController::OnJumpStop() {
++    node_->SetVar(PROP_IS_JUMPING, false);
++    node_->SendEvent(EVENT_JUMP_STOP);
++}
+ 
+-            OnJumpStart();
++void MoveController::OnJumpStart() {
++    node_->SetVar(PROP_IS_JUMPING, true);
++    node_->SendEvent(EVENT_JUMP_START);
+-        }
++}
++
++void MoveController::DoMove(StringHash eventType, VariantMap &eventData) {
++    const auto &pRigidBody2D = node_->GetComponent<RigidBody2D>();
++    const auto &moveSpeed = node_->GetVar(PROP_SPEED).GetFloat();
++    const auto direction = eventData[EventMove::P_DIRECTION].GetVector2();
++
++    if (direction == Vector2::ZERO) {
++        OnStopRunning();
++    } else {
++        pRigidBody2D->ApplyLinearImpulse(direction * moveSpeed, pRigidBody2D->GetMassCenter(), true);
++        node_->SetVar(PROP_DIRECTION, direction.Normalized());
++        OnStartRunning();
+     }
+ }
+ 
+-bool ManualMoveController::Flying() {
+-    const auto pRigidBody2D = node_->GetComponent<RigidBody2D>();
+-    // dirty hack, but fine enough for now ^_^
+-    return (std::fabs(pRigidBody2D->GetLinearVelocity().y_) >= 0.00001f);
++void MoveController::DoJump(StringHash eventType, VariantMap &eventData) {
++    if (IsFlying()) {
++        return;
+-}
++    }
+ 
+-void ManualMoveController::RegisterObject(Context *context) {
+-    context->RegisterFactory<ManualMoveController>();
++    const auto &pRigidBody2D = node_->GetComponent<RigidBody2D>();
++    const auto &jumpSpeed = node_->GetVar(PROP_JUMP_SPEED).GetFloat();
++    pRigidBody2D->ApplyLinearImpulse(Vector2::UP * jumpSpeed, pRigidBody2D->GetMassCenter(), true);
++    OnJumpStart();
+ }
+ 
+-void ManualMoveController::OnStartRunning() {
+-    node_->SetVar(PROP_IS_RUNNING, true);
+-    node_->SendEvent(EVENT_RUN_START);
++void MoveController::FixedPostUpdate(float timeStep) {
++    const auto jumping = node_->GetVar(PROP_IS_JUMPING).GetBool();
++    if (jumping && !IsFlying()) {
++        OnJumpStop();
+-}
++    }
+-
+-void ManualMoveController::OnStopRunning() {
+-    node_->SetVar(PROP_IS_RUNNING, false);
+-    node_->SendEvent(EVENT_RUN_STOP);
+ }
+ 
+-void ManualMoveController::OnJumpStop() {
+-    node_->SetVar(PROP_IS_JUMPING, false);
+-    node_->SendEvent(EVENT_JUMP_STOP);
+-}
+-
+-void ManualMoveController::OnJumpStart() {
+-    node_->SetVar(PROP_IS_JUMPING, true);
+-    node_->SendEvent(EVENT_JUMP_START);
++bool MoveController::IsFlying() {
++    const auto pRigidBody2D = node_->GetComponent<RigidBody2D>();
++    // dirty hack, but fine enough for now ^_^
++    return (std::fabs(pRigidBody2D->GetLinearVelocity().y_) >= 0.00001f);
+ }
+Index: PlayerController.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- PlayerController.cpp	(revision )
++++ PlayerController.cpp	(revision )
+@@ -0,0 +1,35 @@
++//
++// Created by botanick on 31.01.16.
++//
++#include <Urho3D/Input/Input.h>
++#include <Urho3D/Urho2D/RigidBody2D.h>
++#include <Urho3D/Scene/Node.h>
++#include <Urho3D/Core/Context.h>
++
++#include "PlayerController.h"
++
++#include "Properties.h"
++
++void PlayerController::RegisterObject(Context *context) {
++    context->RegisterFactory<PlayerController>();
++}
++
++void PlayerController::FixedUpdate(float timeStep) {
++    const auto &input = GetSubsystem<Input>();
++
++    const bool commandLeft = input->GetKeyDown('A');
++    const bool commandRight = input->GetKeyDown('D');
++
++    VariantMap params;
++    if (commandLeft ^ commandRight) {
++        auto direction = commandLeft ? Vector2::LEFT : Vector2::RIGHT;
++        params[EventMove::P_DIRECTION] = direction * timeStep;
++    } else {
++        params[EventMove::P_DIRECTION] = Vector2::ZERO;
++    }
++    SendEvent(EVENT_DO_MOVE, params);
++
++    if (input->GetKeyPress(KEY_SPACE)) {
++        SendEvent(EVENT_DO_JUMP);
++    }
++}
+Index: ManualMoveController.h
+===================================================================
+--- ManualMoveController.h	(date 1454261594000)
++++ MoveController.h	(revision )
+@@ -8,27 +8,30 @@
+ 
+ using namespace Urho3D;
+ 
+-class ManualMoveController : public LogicComponent {
++class MoveController : public LogicComponent {
+ 
+-URHO3D_OBJECT(ManualMoveController, LogicComponent)
++URHO3D_OBJECT(MoveController, LogicComponent)
+ 
+ public:
+     void static RegisterObject(Context *context);
+ 
+-    ManualMoveController(Context *context)
++    MoveController(Context *context)
+             : LogicComponent(context) {
+-        SetUpdateEventMask(USE_FIXEDUPDATE);
++        SetUpdateEventMask(USE_FIXEDPOSTUPDATE);
+     }
+ 
+-    virtual void FixedUpdate(float timeStep) override;
+-
+ private:
+-    bool Flying();
+-
+     void OnStartRunning();
+     void OnStopRunning();
+     void OnJumpStop();
+     void OnJumpStart();
++
++    void DoJump(StringHash eventType, VariantMap &eventData);
++    void DoMove(StringHash eventType, VariantMap &eventData);
++public:
++    virtual void FixedPostUpdate(float timeStep) override;
++    virtual void Start() override;
++    bool IsFlying();
+ };
+ 
+ 
