@@ -19,7 +19,7 @@ public:
 
     virtual void DelayedStart() override;
 private:
-    void OnMouseDown(StringHash eventType, VariantMap &eventData);
+    void DoShoot(StringHash eventType, VariantMap &eventData);
     void Shoot(Vector2 target);
     void CreateBullet(Vector2 direction);
 };

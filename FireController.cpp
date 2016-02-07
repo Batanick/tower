@@ -23,29 +23,7 @@ void FireController::RegisterObject(Context *context) {
 }
 
 void FireController::DelayedStart() {
-    SubscribeToEvent(E_UIMOUSECLICK, URHO3D_HANDLER(FireController, OnMouseDown));
-}
-
-
-void FireController::OnMouseDown(StringHash eventType, VariantMap &eventData) {
-    const auto cameraNode = GetScene()->GetChild(NAME_CAMERA);
-    if (!cameraNode) {
-        return;
-    }
-
-    const auto pCamera = cameraNode->GetComponent<Camera>();
-    if (!pCamera) {
-        return;
-    }
-
-    const auto graphics = GetSubsystem<Graphics>();
-
-    float x = (float) eventData[UIMouseClick::P_X].GetInt();
-    float y = (float) eventData[UIMouseClick::P_Y].GetInt();
-
-    auto target = pCamera->ScreenToWorldPoint(Vector3(x / graphics->GetWidth(), y / graphics->GetHeight(), 0.0f));
-
-    Shoot(Vector2(target.x_, target.y_));
+    SubscribeToEvent(node_, EVENT_DO_SHOOT, URHO3D_HANDLER(FireController, DoShoot));
 }
 
 void FireController::Shoot(Vector2 target) {
@@ -53,6 +31,9 @@ void FireController::Shoot(Vector2 target) {
     direction.Normalize();
 
     CreateBullet(direction);
+    VariantMap params;
+    params[EventAnimationShoot::P_TARGET] = direction;
+    node_->SendEvent(EVENT_SHOOT, params);
 }
 
 void FireController::CreateBullet(Vector2 direction) {
@@ -78,4 +59,8 @@ void FireController::CreateBullet(Vector2 direction) {
     bullet->CreateComponent<Bullet>();
 
     bullet->Scale(0.3f);
+}
+
+void FireController::DoShoot(StringHash eventType, VariantMap &eventData) {
+    Shoot(eventData[EventDoShoot::P_TARGET].GetVector2());
 }

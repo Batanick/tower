@@ -15,10 +15,14 @@ URHO3D_OBJECT(MoveController, LogicComponent)
 public:
     void static RegisterObject(Context *context);
 
+    enum class JumpStage {
+        Start, Jump, Ready
+    };
+
     MoveController(Context *context)
             : LogicComponent(context),
               direction(Vector2::ZERO),
-              wantJump(false), sensedCount(0) {
+              wantJump(false), sensedCount(0), jumpStage(JumpStage::Ready) {
         SetUpdateEventMask(USE_FIXEDUPDATE);
     }
 
@@ -34,15 +38,12 @@ private:
     void BeginSense(StringHash eventType, VariantMap &eventData);
     void StopSense(StringHash eventType, VariantMap &eventData);
 
-    bool IsFlying() {
-        return sensedCount <= 0;
-    }
-
     Vector2 direction;
     bool wantJump;
 
     SharedPtr<Node> sensor;
     int sensedCount;
+    JumpStage jumpStage;
 public:
     virtual void Start() override;
     virtual void FixedUpdate(float timeStep) override;

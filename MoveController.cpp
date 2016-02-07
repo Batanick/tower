@@ -47,7 +47,7 @@ void MoveController::OnJumpStart() {
 }
 
 void MoveController::DoMove(StringHash eventType, VariantMap &eventData) {
-    direction = eventData[EventMove::P_DIRECTION].GetVector2();
+    direction = eventData[EventDoMove::P_DIRECTION].GetVector2();
 }
 
 void MoveController::BeginSense(StringHash eventType, VariantMap &eventData) {
@@ -56,6 +56,11 @@ void MoveController::BeginSense(StringHash eventType, VariantMap &eventData) {
 
     if (obj1 == sensor || obj2 == sensor) {
         sensedCount++;
+
+        if (jumpStage == JumpStage::Jump) {
+            jumpStage = JumpStage::Ready;
+            OnJumpStop();
+        }
     }
 }
 
@@ -65,6 +70,9 @@ void MoveController::StopSense(StringHash eventType, VariantMap &eventData) {
 
     if (obj1 == sensor || obj2 == sensor) {
         sensedCount--;
+        if (sensedCount <= 0 && jumpStage == JumpStage::Start) {
+            jumpStage = JumpStage::Jump;
+        }
     }
 }
 
@@ -94,18 +102,11 @@ void MoveController::FixedUpdate(float timeStep) {
         OnStopRunning();
     }
 
-    const auto jumping = node_->GetVar(PROP_IS_JUMPING).GetBool();
-    if (!IsFlying()) {
-        if (jumping) {
-            OnJumpStop();
-        }
-
-        if (wantJump) {
-            const auto &jumpSpeed = node_->GetVar(PROP_JUMP_SPEED).GetFloat();
-            pRigidBody2D->ApplyLinearImpulse(Vector2::UP * jumpSpeed, pRigidBody2D->GetMassCenter(), true);
-            OnJumpStart();
-        }
-
+    if (sensedCount > 0 && wantJump) {
+        const auto &jumpSpeed = node_->GetVar(PROP_JUMP_SPEED).GetFloat();
+        pRigidBody2D->ApplyLinearImpulse(Vector2::UP * jumpSpeed, pRigidBody2D->GetMassCenter(), true);
+        jumpStage = JumpStage::Start;
+        OnJumpStart();
     }
 
     direction = Vector2::ZERO;
@@ -127,7 +128,7 @@ void MoveController::SetUpJumpSensor() {
     CollisionBox2D *box = sensor->CreateComponent<CollisionBox2D>();
     box->SetTrigger(true);
     box->SetGroupIndex(-((short) node_->GetID()));
-    box->SetSize(collision->GetSize().x_ * 0.7f, 0.1f);
+    box->SetSize(collision->GetSize().x_ * 0.7f, 0.01f);
 
     sensor->SubscribeToEvent(E_PHYSICSBEGINCONTACT2D, URHO3D_HANDLER(MoveController, BeginSense));
     sensor->SubscribeToEvent(E_PHYSICSENDCONTACT2D, URHO3D_HANDLER(MoveController, StopSense));

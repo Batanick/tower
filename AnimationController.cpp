@@ -13,8 +13,7 @@
 
 AnimationController::AnimationController(Context *context) : LogicComponent(context) {
     // nothing
-    animations.insert(Animation::Idle);
-    current = Animation::Idle;
+    animations.insert(Animation(AnimationPriority::Idle, true, "idle"));
 }
 
 void AnimationController::RegisterObject(Context *context) {
@@ -29,22 +28,28 @@ void AnimationController::Start() {
     SubscribeToEvent(node_->GetParent(), EVENT_RUN_STOP, URHO3D_HANDLER(AnimationController, OnRunStop));
     SubscribeToEvent(node_->GetParent(), EVENT_JUMP_START, URHO3D_HANDLER(AnimationController, OnJumpStart));
     SubscribeToEvent(node_->GetParent(), EVENT_JUMP_STOP, URHO3D_HANDLER(AnimationController, OnJumpStop));
+    SubscribeToEvent(node_->GetParent(), EVENT_SHOOT, URHO3D_HANDLER(AnimationController, OnShoot));
 }
 
 void AnimationController::OnRunStart(StringHash eventType, VariantMap &eventData) {
-    pushAnimation(Animation::Run);
+    pushAnimation(Animation(AnimationPriority::Run, true, "run"));
 }
 
 void AnimationController::OnJumpStart(StringHash eventType, VariantMap &eventData) {
-    pushAnimation(Animation::Jump);
+    pushAnimation(Animation(AnimationPriority::Jump, false, "jump"));
 }
 
 void AnimationController::OnRunStop(StringHash eventType, VariantMap &eventData) {
-    pullAnimation(Animation::Run);
+    pullAnimation(AnimationPriority::Run);
 }
 
 void AnimationController::OnJumpStop(StringHash eventType, VariantMap &eventData) {
-    pullAnimation(Animation::Jump);
+    pullAnimation(AnimationPriority::Jump);
+}
+
+void AnimationController::OnShoot(StringHash eventType, VariantMap &eventData) {
+    const auto target = eventData[EventDoShoot::P_TARGET].GetVector2();
+    pushAnimation(Animation(AnimationPriority::Shoot, false, "shoot"));
 }
 
 void AnimationController::FixedPostUpdate(float timeStep) {
@@ -53,8 +58,14 @@ void AnimationController::FixedPostUpdate(float timeStep) {
     sprite->SetFlipX(direction == Vector2::LEFT);
 }
 
-void AnimationController::pullAnimation(const AnimationController::Animation &animation) {
-    animations.erase(animation);
+void AnimationController::pullAnimation(const AnimationController::AnimationPriority &priority) {
+    for (auto it = animations.rbegin(); it != animations.rend(); it++) {
+        if (it->GetPriority() == priority) {
+            animations.erase(std::next(it).base());
+            break;
+        }
+    }
+
     refresh();
 }
 
@@ -67,26 +78,12 @@ void AnimationController::refresh() {
     auto sprite = node_->GetComponent<AnimatedSprite2D>();
     if (animations.empty()) {
         sprite->SetAnimation("idle");
-        current = Animation::Idle;
+        URHO3D_LOGERROR("Unable to determine animation");
     }
 
     auto it = animations.rbegin();
-    if (*it != current) {
-        current = *it;
-
-        switch (current) {
-            case Animation::Idle:
-                sprite->SetAnimation("idle");
-                break;
-            case Animation::Jump:
-                sprite->SetAnimation("jump_start", LoopMode2D::LM_FORCE_LOOPED);
-                break;
-            case Animation::Run:
-                sprite->SetAnimation("run");
-                break;
-            case Animation::Shoot:
-                sprite->SetAnimation("shoot");
-                break;
-        }
+    if (it != animations.rend() && it->GetPriority() != current) {
+        current = it->GetPriority();
+        sprite->SetAnimation(it->GetName(), it->IsLoop() ? LoopMode2D::LM_FORCE_LOOPED : LM_FORCE_CLAMPED);
     }
 }

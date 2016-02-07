@@ -17,6 +17,9 @@ public:
         // nothing
     }
 
+
+    void DelayedStart();
+    void OnMouseDown(StringHash eventType, VariantMap &eventData);
 };
 
 
