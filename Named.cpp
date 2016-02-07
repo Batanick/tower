@@ -32,7 +32,7 @@ void Named::DelayedStart() {
     node->GetVar("name");
     textNode = node->CreateChild("name");
 
-    const auto sprite = node->GetDerivedComponent<Drawable2D>();
+    const auto sprite = node->GetDerivedComponent<Drawable2D>(true);
     const auto bBox = sprite->GetWorldBoundingBox();
 
     textNode->SetPosition(Vector3(0, 0.7, 0));

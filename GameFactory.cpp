@@ -94,7 +94,7 @@ void GameFactory::Wall(const Vector2 &position, const Vector2 &scale) {
 
 void GameFactory::MainPlayer(const Vector2 &position) {
     ResourceCache *cache = scene->GetSubsystem<ResourceCache>();
-    const auto animationSet = cache->GetResource<AnimationSet2D>("hero/hero.scml");
+    const auto animationSet = cache->GetResource<AnimationSet2D>("/spine/hero/spineboy.json");
 
     Node *node = scene->CreateChild("");
     node->SetPosition(position);
@@ -114,15 +114,18 @@ void GameFactory::MainPlayer(const Vector2 &position) {
     node->SetVar(PROP_SPEED, 4.0f);
     node->SetVar(PROP_JUMP_SPEED, 8.0f);
 
-    auto sprite = node->CreateComponent<AnimatedSprite2D>();
+    const auto animationNode = node->CreateChild(NAME_ANIMATIONS);
+    auto sprite = animationNode->CreateComponent<AnimatedSprite2D>();
     sprite->SetAnimationSet(animationSet);
     sprite->SetAnimation("idle");
-    node->CreateComponent<AnimationController>();
+    animationNode->SetScale2D(0.165f, 0.165f);
+    animationNode->CreateComponent<AnimationController>();
+    animationNode->SetPosition2D(0.0f, -sprite->GetWorldBoundingBox().Size().y_ / 2);
 
     // Create box
     CollisionBox2D *box = node->CreateComponent<CollisionBox2D>();
     // Set size
-    box->SetSize(Vector2(0.93f, 1.1f));
+    box->SetSize(Vector2(0.8f, 1.1f));
     box->SetGroupIndex(-((short) node->GetID())); // setting up collision ignore group
 
     node->CreateComponent<FireController>();

@@ -19,6 +19,7 @@ static const StringHash PROP_DIRECTION{"direction"};
 // unique object names
 static const String NAME_CAMERA{"Camera"};
 static const String NAME_MAIN_CHAR{"player"};
+static const String NAME_ANIMATIONS{"animation"};
 
 // =====================================================
 // EVENTS

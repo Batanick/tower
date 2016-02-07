@@ -25,10 +25,10 @@ void AnimationController::Start() {
     auto sprite = node_->GetComponent<AnimatedSprite2D>();
     sprite->SetAnimation("idle");
 
-    SubscribeToEvent(node_, EVENT_RUN_START, URHO3D_HANDLER(AnimationController, OnRunStart));
-    SubscribeToEvent(node_, EVENT_RUN_STOP, URHO3D_HANDLER(AnimationController, OnRunStop));
-    SubscribeToEvent(node_, EVENT_JUMP_START, URHO3D_HANDLER(AnimationController, OnJumpStart));
-    SubscribeToEvent(node_, EVENT_JUMP_STOP, URHO3D_HANDLER(AnimationController, OnJumpStop));
+    SubscribeToEvent(node_->GetParent(), EVENT_RUN_START, URHO3D_HANDLER(AnimationController, OnRunStart));
+    SubscribeToEvent(node_->GetParent(), EVENT_RUN_STOP, URHO3D_HANDLER(AnimationController, OnRunStop));
+    SubscribeToEvent(node_->GetParent(), EVENT_JUMP_START, URHO3D_HANDLER(AnimationController, OnJumpStart));
+    SubscribeToEvent(node_->GetParent(), EVENT_JUMP_STOP, URHO3D_HANDLER(AnimationController, OnJumpStop));
 }
 
 void AnimationController::OnRunStart(StringHash eventType, VariantMap &eventData) {
@@ -48,7 +48,7 @@ void AnimationController::OnJumpStop(StringHash eventType, VariantMap &eventData
 }
 
 void AnimationController::FixedPostUpdate(float timeStep) {
-    const auto direction = node_->GetVar(PROP_DIRECTION).GetVector2();
+    const auto direction = node_->GetParent()->GetVar(PROP_DIRECTION).GetVector2();
     auto sprite = node_->GetComponent<AnimatedSprite2D>();
     sprite->SetFlipX(direction == Vector2::LEFT);
 }
