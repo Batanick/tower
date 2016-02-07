@@ -17,7 +17,7 @@
 #include <Urho3D/Graphics/AnimatedModel.h>
 
 #include "Named.h"
-#include "ManualMoveController.h"
+#include "MoveController.h"
 
 #include "Properties.h"
 #include "FollowCamera.h"
@@ -25,15 +25,17 @@
 #include "FireController.h"
 #include "Bullet.h"
 #include "Mortal.h"
+#include "Legat.h"
 
 void GameFactory::InitContext(Context *context) {
     Named::RegisterObject(context);
-    ManualMoveController::RegisterObject(context);
+    MoveController::RegisterObject(context);
     FollowCamera::RegisterObject(context);
     AnimationController::RegisterObject(context);
     FireController::RegisterObject(context);
     Bullet::RegisterObject(context);
     Mortal::RegisterObject(context);
+    Legat::RegisterObject(context);
 }
 
 void GameFactory::InitScene(const SharedPtr<Scene> scene) {
@@ -108,7 +110,7 @@ void GameFactory::MainPlayer(const Vector2 &position) {
     pRigidBody2D->SetMass(10.0);
     pRigidBody2D->SetLinearDamping(2.0f);
 
-    node->CreateComponent<ManualMoveController>();
+    node->CreateComponent<MoveController>();
     node->SetVar(PROP_SPEED, 4.0f);
     node->SetVar(PROP_JUMP_SPEED, 8.0f);
 
@@ -124,4 +126,5 @@ void GameFactory::MainPlayer(const Vector2 &position) {
     box->SetGroupIndex(-((short) node->GetID())); // setting up collision ignore group
 
     node->CreateComponent<FireController>();
+    node->CreateComponent<Legat>();
 }
