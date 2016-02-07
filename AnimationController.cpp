@@ -96,8 +96,6 @@ void AnimationController::refresh() {
     if (it != animations.rend() && it->GetPriority() != current) {
         current = it->GetPriority();
         sprite->SetAnimation(it->GetName(), it->IsLoop() ? LoopMode2D::LM_FORCE_LOOPED : LM_FORCE_CLAMPED);
-        if (it->GetTimeout() > 0.0f) {
-            timeout = it->GetTimeout();
-        }
+        timeout = it->GetTimeout();
     }
 }

@@ -15,18 +15,9 @@
   <component name="ChangeListManager">
     <list id="7e48aa28-97fe-4c55-8da9-45e505e5a569" name="Default" comment="Shooting mechanics" />
     <list id="bdf7ee86-2012-433d-94e8-a8c4066ddf3f" name="ignore" comment="" />
-    <list default="true" id="48fe5b88-098a-4dcd-bb82-63d4d4553337" name="Legat" comment="Spine migration">
+    <list default="true" id="48fe5b88-098a-4dcd-bb82-63d4d4553337" name="Legat" comment="New animation controller implementation">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AnimationController.cpp" afterPath="$PROJECT_DIR$/AnimationController.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AnimationController.h" afterPath="$PROJECT_DIR$/AnimationController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FireController.cpp" afterPath="$PROJECT_DIR$/FireController.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FireController.h" afterPath="$PROJECT_DIR$/FireController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Legat.cpp" afterPath="$PROJECT_DIR$/Legat.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Legat.h" afterPath="$PROJECT_DIR$/Legat.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MoveController.cpp" afterPath="$PROJECT_DIR$/MoveController.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MoveController.h" afterPath="$PROJECT_DIR$/MoveController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Properties.h" afterPath="$PROJECT_DIR$/Properties.h" />
     </list>
     <ignored path="tower.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,14 +55,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Legat.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Legat.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Legat.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2644757">
-              <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding>
                 <element signature="e#42#73#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameFactory.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameFactory.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimatedSprite2D.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/AnimatedSprite2D.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CollisionBox2D.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/CollisionBox2D.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Drawable2D.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/Drawable2D.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,53 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnimatedSprite2D.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/AnimatedSprite2D.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FireController.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FireController.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FireController.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FireController.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-              <folding>
-                <element signature="e#43#70#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Legat.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Legat.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+              <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -142,22 +131,17 @@
         <entry file="file://$PROJECT_DIR$/AnimationController.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <marker date="1454864636702" expanded="true" signature="765:1398" placeholder="{...}" />
-                <marker date="1454864636702" expanded="true" signature="988:1028" placeholder="{...}" />
-                <marker date="1454864636702" expanded="true" signature="1058:1094" placeholder="{...}" />
-                <marker date="1454864636702" expanded="true" signature="1135:1171" placeholder="{...}" />
-              </folding>
+              <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnimationController.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AnimationController.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AnimationController.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.7887324">
+              <caret line="98" column="9" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -217,13 +201,13 @@
         <option value="$PROJECT_DIR$/MoveController.h" />
         <option value="$PROJECT_DIR$/Legat.h" />
         <option value="$PROJECT_DIR$/FireController.h" />
-        <option value="$PROJECT_DIR$/AnimationController.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Properties.h" />
-        <option value="$PROJECT_DIR$/AnimationController.cpp" />
         <option value="$PROJECT_DIR$/MoveController.cpp" />
         <option value="$PROJECT_DIR$/FireController.cpp" />
         <option value="$PROJECT_DIR$/Legat.cpp" />
+        <option value="$PROJECT_DIR$/AnimationController.h" />
+        <option value="$PROJECT_DIR$/AnimationController.cpp" />
       </list>
     </option>
   </component>
@@ -307,6 +291,58 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="External Libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Header Search Paths" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tower" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Header Search Paths" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Urho3D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tower" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Header Search Paths" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Urho3D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Urho2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -520,7 +556,19 @@
       <option name="project" value="LOCAL" />
       <updated>1454861044228</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="New animation controller implementation">
+      <created>1454870288238</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1454870288238</updated>
+    </task>
+    <task id="LOCAL-00021" summary="New animation controller implementation">
+      <created>1454872401084</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1454872401084</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -532,7 +580,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.49583334" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.49166667" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31873727" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31873727" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299389" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -595,33 +643,17 @@
     <MESSAGE value="Shooting mechanics" />
     <MESSAGE value="Legat introduced" />
     <MESSAGE value="Spine migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Spine migration" />
+    <MESSAGE value="New animation controller implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="New animation controller implementation" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/FireController.cpp</url>
-          <line>29</line>
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Legat.cpp</url>
-          <line>61</line>
-          <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/FireController.cpp</url>
-          <line>64</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="126" />
+      <option name="time" value="127" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -630,13 +662,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Scene/Animatable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Math/StringHash.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -690,6 +715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -760,6 +786,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -788,6 +815,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="264" column="10" selection-start-line="264" selection-start-column="10" selection-end-line="264" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -812,13 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/CollisionBox2D.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/ThirdParty/Box2D/Dynamics/b2Fixture.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -830,6 +851,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -845,7 +867,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#43#62#0" expanded="true" />
+            <element signature="e#43#62#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -872,18 +894,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GameFactory.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="28" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/5/bits/stl_set.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="538" column="29" selection-start-line="538" selection-start-column="29" selection-end-line="538" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -891,6 +906,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -905,6 +921,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -919,27 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AnimationController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <marker date="1454864636702" expanded="true" signature="765:1398" placeholder="{...}" />
-            <marker date="1454864636702" expanded="true" signature="988:1028" placeholder="{...}" />
-            <marker date="1454864636702" expanded="true" signature="1058:1094" placeholder="{...}" />
-            <marker date="1454864636702" expanded="true" signature="1135:1171" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/AnimatedSprite2D.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -968,10 +964,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AnimationController.cpp">
+    <entry file="file://$PROJECT_DIR$/Properties.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -986,10 +982,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Properties.h">
+    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/Drawable2D.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="45" />
+          <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/AnimatedSprite2D.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../libs/Urho3D/include/Urho3D/Urho2D/CollisionBox2D.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameFactory.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Legat.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="e#42#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AnimationController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -997,20 +1035,16 @@
     <entry file="file://$PROJECT_DIR$/FireController.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-          <folding>
-            <element signature="e#43#70#0" expanded="true" />
-          </folding>
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Legat.cpp">
+    <entry file="file://$PROJECT_DIR$/AnimationController.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2644757">
-          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-          <folding>
-            <element signature="e#42#73#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.7887324">
+          <caret line="98" column="9" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
